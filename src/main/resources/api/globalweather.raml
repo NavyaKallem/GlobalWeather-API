@@ -1,0 +1,52 @@
+#%RAML 1.0
+title: GlobalWeather
+version: v1
+description: Global Weather details
+
+/GetWeather:
+  get:
+    description: Gets the weather specified for cities and countries. If query parameters are not provided, gets all of the data.
+    queryParameters:
+      CityName:
+        required: false
+        type: string
+      CountryName:
+        required: false
+        type: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: any
+            example:
+              !include /GlobalWeatherExample/globalweatherexample.raml
+      404:
+        body:
+          application/json:
+            type: any
+            example:
+              {
+                "message" :"The requested URL /GlobalWeather was not found on this server"
+              }
+/GetCitiesByCountry:
+  get:
+    description: Gets  the weather for the cities in the country mentioned. If no country mentioned, gives weather for all cities.
+    queryParameters:
+      CountryName:
+        required: false
+        type: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: any
+            example:
+              !include /GlobalWeatherExample/globalweatherexample.raml
+      404:
+        body:
+          application/json:
+            type: any
+            example:
+              {
+                "message" :"The requested URL /GlobalWeather was not found on this server"
+              }
