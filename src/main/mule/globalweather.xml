@@ -5,11 +5,7 @@ http://www.mulesoft.org/schema/mule/wsc http://www.mulesoft.org/schema/mule/wsc/
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
     
     
-	
-	
-	<wsc:config name="Web_Service_Consumer_Config" doc:name="Web Service Consumer Config" doc:id="f35c7219-0706-40af-a888-8098e845a89e" >
-		<wsc:connection wsdlLocation="http://www.webservicex.com/globalweather.asmx?WSDL" service="GetCitiesByCountry" port="8081" />
-	</wsc:config>
+
 	<flow name="globalweather-main">
         <http:listener config-ref="globalweather-httpListenerConfig" path="/api/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
